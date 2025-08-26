@@ -11,7 +11,7 @@ BUG_REPORT_URL = "https://www.github.com/dssjon"
 ABOUT_URL = "Made with <3 by www.github.com/dssjon"
 
 # Model names
-EMBEDDING_MODEL_NAME = "hkunlp/instructor-large"
+EMBEDDING_MODEL_NAME = "hkunlp/instructor-base"
 API_URL = "https://api.anthropic.com/v1/messages"
 LLM_MODEL_NAME = "claude-3-5-sonnet-20240620"
 MAX_TOKENS = 500
