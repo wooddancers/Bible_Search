@@ -3,7 +3,7 @@ langchain
 langchain_community
 langchain-anthropic
 anthropic
-chromadb
+chromadb==0.4.22
 sentence-transformers
 InstructorEmbedding
 transformers
