@@ -114,7 +114,7 @@ embedding_function = HuggingFaceInstructEmbeddings(
     model_name=model_name,
     query_instruction=query_instruction,
     encode_kwargs = {'normalize_embeddings': True},
-    model_kwargs = {"device": "mps"}
+    model_kwargs = {"device": "cpu"}
 )
 
 # Create Chroma database

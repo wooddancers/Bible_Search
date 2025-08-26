@@ -9,7 +9,7 @@ import os
 
 @st.cache_resource
 def setup_llm():
-    api_key = os.getenv("ANTHROPIC_API_KEY")
+    api_key = st.secrets["ANTHROPIC_API_KEY"]
     if not api_key:
         print("No API token found, so LLM support is disabled.")
         return None
@@ -35,6 +35,19 @@ def invoke_llm(llm, prompt):
         "temperature": 0.0,
         "messages": [{"role": "user", "content": prompt}]
     }
+# --- ADD THESE DEBUG LINES ---
+    print("--- DEBUG INFO ---")
+    print(f"Request URL: {llm['api_url']}")
+
+    # Create a safe version of headers for printing
+    debug_headers = llm['headers'].copy()
+    if 'x-api-key' in debug_headers:
+        # Hide most of the key for security
+        key = debug_headers['x-api-key']
+        debug_headers['x-api-key'] = f"{key[:10]}...{key[-4:]}"
+    print(f"Request Headers: {debug_headers}")
+    print("--------------------")
+    # --- END OF DEBUG LINES ---
     
     try:
         response = requests.post(llm["api_url"], headers=llm["headers"], json=data)
